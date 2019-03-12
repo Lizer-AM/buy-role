@@ -1,8 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const fs = require("fs"); //npm i fs
-var prefix = "-"
-let vipKeys = JSON.parse(fs.readFileSync("./vipKeys.json", "utf8"));
 
 client.on("message", msg=>{
 let id = "532613290795335700"; // ايديك
@@ -40,21 +37,6 @@ msg.channel.send(`كردت بروبوت\`${Price}\` لديك 4 دقائق لتح
 `).then( msgs =>{
 const filter = response => response.author.id == "282859044593598464" && response.mentions._content.includes(`:moneybag: | ${msg.author.username}, has transferred \`$${Price2}\` to ${msg.guild.members.get(id)}`);
 msg.channel.awaitMessages(filter, { maxMatches: 1, time: 240000, errors: ['time'] })
-.then( collected =>{
-msgs.delete()
-msg.reply(`تم اعطائك رتبة \`${role}\``);
-msg.member.addRole(roleW);
-}).catch(e => {});
-})})
-giftc.on("collect", r=>{
-  msgs2.delete()
-  let roleW = msg.guild.roles.find(r=>r.name == role);
-  if(!roleW) return msg.reply(`البوت مقفل لعدم وجود رتبة ب أسم \`${role}\``)
-msg.channel.send(`كردت بروبوت\`${Price}\` لديك 4 دقائق لتحويل
-إلى ${msg.guild.members.get(id)}
-`).then( msgs =>{
-  const filter = response => response.author.id == "282859044593598464" && response.mentions._content.includes(`:moneybag: | ${msg.author.username}, has transferred \`$${Price2}\` to ${msg.guild.members.get(id)}`);
-  msg.channel.awaitMessages(filter, { maxMatches: 1, time: 240000, errors: ['time'] })
   .then( collected =>{
   msgs.delete()
   genKey(msg,roleW);
@@ -64,7 +46,7 @@ msg.channel.send(`كردت بروبوت\`${Price}\` لديك 4 دقائق لتح
 })})})
 ///
 }
-if(cmd === `${prefix}use`){
+if(cmd === `${prefix}usesdsd`){
   let args = msg.content.split(" ").slice(1)[0];
   if(!args) {  
     let embed = new Discord.RichEmbed()
@@ -135,7 +117,22 @@ function save(){
 
 
 
+client.on('message', message => {
+     if (message.content === "-info") {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+     
+      .addField("**۩ஜ▬▬▬▬▬▬✦ Role Vip✦▬▬▬▬▬▬ஜ۩**","**رتبة رنبو + اعضاء الرتبة بيكونوا اول ناس تسخدم اوامر الجديدة للبوت **")
+     .addField("**❖ قيف اوى مميزللرتبة***","**قيف اوى مميز  من كريديت بكسل واكواد رتبة  الخ  **")
+      .addField("**❖  شات خاص**","**  شات خاص للرتبة **")
+      .addField("**❖ -vip**","**لشراء الرتبة **")
+      .addField("**❖ -used**","**لاستخدام كود **")
 
+    .setColor('RANDOM')
+  message.channel.send(embed);
+    }
+});
+ 
 var prefix = "-"
 giftKeys = {};
 let devs = ["532613290795335700"]; 
@@ -216,16 +213,11 @@ let embed = new Discord.RichEmbed()
     delete giftKeys[args]
   }else{
     let embed = new Discord.RichEmbed()
-    .setTitle(`:x: - **الكود غير صيحيح أو انه مستعمل من قبل**`)
+    .setTitle(`:x: - **الكود غير صحيح أو انه مستعمل من قبل**`)
     .setColor("#42f4f4")
     msgs.edit(embed)
   }});
 };
 });
 
-
-
-
-
- 
 client.login(process.env.BOT_TOKEN);
