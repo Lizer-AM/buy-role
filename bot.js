@@ -241,35 +241,54 @@ let embed = new Discord.RichEmbed()
 
 
 
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const config = require('./config.json');
 
-client.on('message', message => {//new msg event
-if(!message.channel.guild) return;
-  if(message.content.startsWith(prefix + 'set')) {//to create the rainbow role
-	  let role = message.guild.roles.find('name', 'VIP')
-    if(role) return message.channel.send(`This Step Already Completed !`)//if the role already created return with this msg
-  //start of create role 
-  if(!role){
-    rainbow =  message.guild.createRole({
-   name: "VIP",//the role will create name
-   color: "#000000",//the default color
-   permissions:[]//the permissions
- //end of create role
-})
+const size    = config.colors;
+const rainbow = new Array(size);
 
+for (var i=0; i<size; i++) {
+  var red   = sin_to_hex(i, 0 * Math.PI * 2/3); // 0   deg
+  var blue  = sin_to_hex(i, 1 * Math.PI * 2/3); // 120 deg
+  var green = sin_to_hex(i, 2 * Math.PI * 2/3); // 240 deg
+
+  rainbow[i] = '#'+ red + green + blue;
 }
-message.channel.send('Done The VIP Setup Has Been Completed')//if the step completed
-}})
 
-client.on('ready', () => {//new ready event
-  setInterval(function(){
-      client.guilds.forEach(g => {
-                  var role = g.roles.find('name', 'VIP');//rainbow role name
-                  if (role) {
-                      role.edit({color : "RANDOM"});
-                  };
-      });
-  }, 5000);//the rainbow time
+function sin_to_hex(i, phase) {
+  var sin = Math.sin(Math.PI / size * 2 * i + phase);
+  var int = Math.floor(sin * 127) + 128;
+  var hex = int.toString(16);
+
+  return hex.length === 1 ? '0'+hex : hex;
+}
+
+let place = 0;
+const servers = config.servers;
+
+function changeColor() {
+  for (let index = 0; index < servers.length; ++index) {		
+    client.guilds.get(servers[index]).roles.find('name', config.roleName).setColor(rainbow[place])
+		.catch(console.error);
+		
+    if(config.logging){
+      console.log(`[ColorChanger] Changed color to ${rainbow[place]} in server: ${servers[index]}`);
     }
+    if(place == (size - 1)){
+      place = 0;
+    }else{
+      place++;
+    }
+  }
+}
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.username}!`);
+  if(config.speed < 60000){console.log("The minimum speed is 60.000, if this gets abused your bot might get IP-banned"); process.exit(1);}
+  setInterval(changeColor, config.speed);
 });
+
+
  
 client.login(process.env.BOT_TOKEN);
