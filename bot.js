@@ -5,7 +5,7 @@ client.on("message", msg=>{
 let id = "532613290795335700"; // ايديك
 let role = "VIP"; // اسم رتبة الفيب
 let Price = 10000; // السعر
-let Price2 = Math.floor(Price-(Price*(1/100)));
+let Price2 = 9900
 if(!Price || Price < 1) return;
 let cmd = msg.content.split(' ')[0];
 if(cmd === `${prefix}vip`){
