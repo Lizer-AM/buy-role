@@ -135,23 +135,7 @@ function save(){
 
 
 
-client.on('message' , message => {
-if (message.content === '-info') {
-           if (!message.member.hasPermission('MANAGE_MESSAGES')) return;
-         let embed = new Discord.RichEmbed()
 
-      .setThumbnail(message.author.avatarURL)    
-      .addField("**۩ஜ▬▬▬▬▬▬✦ Role Vip✦▬▬▬▬▬▬ஜ۩**")
-     .addField("**❖ قيف اوى مميزللرتبة***","**قيف اوى مميز  من كريديت بكسل واكواد رتبة  الخ  **")
-      .addField("**❖  شات خاص**","**  شات خاص للرتبة **")
-      .addField("**❖ -vip**","**لشراء الرتبة **")
-      .addField("**❖ -used**","**لاستخدام كود **")
-
-    .setColor('RANDOM')
-  message.author.sendEmbed(embed);
-    }
-});
- 
 var prefix = "-"
 giftKeys = {};
 let devs = ["532613290795335700"]; 
