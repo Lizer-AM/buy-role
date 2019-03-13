@@ -16,12 +16,16 @@ let embedvip = new Discord.RichEmbed()
 .setThumbnail(msg.author.avatarURL)
 .setTitle("**اختر الطريقة المناسبة لك**")
 .addField("ل شراء الفي اي بي لنفسك","🔱",true )
+.addField("ل شراء الفي اي بي ك هدية","🎁",true)
 .setTimestamp()
 .setFooter(client.user.username,client.user.displayAvatarURL);
 msg.channel.send(embedvip).then(msgs2 =>{
 msgs2.react("🔱").then(()=>{
+  msgs2.react("🎁").then(()=>{
     const me = (reaction, user) => reaction.emoji.name === '🔱' && user.id === msg.author.id;
+    const gift = (reaction, user) => reaction.emoji.name === '🎁' && user.id === msg.author.id;
     const mec = msgs2.createReactionCollector(me, {time: 120000});
+    const giftc = msgs2.createReactionCollector(gift, {time: 120000});
 mec.on("collect", r=>{  
 msgs2.delete()
 if(msg.member.roles.find(r=>r.name == role)) return msg.reply("انت تمتلك الرتبة مسبقًا");
