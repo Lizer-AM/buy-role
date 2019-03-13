@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const fs = require("fs");
+let vipKeys = JSON.parse(fs.readFileSync("./vipKeys.json", "utf8"));
 client.on("message", msg=>{
 let id = "532613290795335700"; // ايديك
 let role = "VIP"; // اسم رتبة الفيب
@@ -60,7 +62,7 @@ msg.channel.send(`كردت بروبوت\`${Price}\` لديك 4 دقائق لتح
 })})})
 ///
 }
-if(cmd === `${prefix}usesdsds`){
+if(cmd === `${prefix}use`){
   let args = msg.content.split(" ").slice(1)[0];
   if(!args) {  
     let embed = new Discord.RichEmbed()
@@ -137,7 +139,7 @@ client.on('message', message => {
         .setThumbnail(message.author.avatarURL)
         .addField("VIP | في اي بي",`**مميزات الرتبة :
         - رتبة راينبو -rainbow
-        - لاستخدام كود -used
+        - لاستخدام كود -used or -use
         - قيف اوايات خاصه
         - شات خاص باعضاء الفي اي بي
         - للشراء -vip**`)
