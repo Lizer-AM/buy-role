@@ -141,7 +141,7 @@ client.on('message', message => {
         - لاستخدام كود -used
         - قيف اوايات خاصه
         - شات خاص باعضاء الفي اي بي
-        - للشراء -buy**`)
+        - للشراء -vip**`)
         message.channel.send(emdeed);
 }
     
