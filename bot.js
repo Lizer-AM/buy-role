@@ -136,15 +136,15 @@ client.on('message', message => {
         var emdeed = new Discord.RichEmbed()
         .setAuthor(message.author.username, message.author.displayAvatarURL)
         .setThumbnail(message.author.avatarURL)
-        .addField("VIP | في اي بي",**مميزات الرتبة :
+        .addField("VIP | في اي بي",`**مميزات الرتبة :
         - رتبة راينبو -rainbow
+        - لاستخدام كود -used
         - قيف اوايات خاصه
         - شات خاص باعضاء الفي اي بي
-        - للشراء -buy
-         -لاستخدام كود -used**)
+        - للشراء -buy**`)
         message.channel.send(emdeed);
 }
-
+    
 
 
 })
@@ -237,9 +237,10 @@ let embed = new Discord.RichEmbed()
 });
 
 
-var prefix = "-"
 
 client.on('ready', () => {//new ready event
+  var prefix = "-"
+
     setInterval(function(){
         client.guilds.forEach(g => {
                     var role = g.roles.find('name', 'VIP Rainbow');//rainbow role name
