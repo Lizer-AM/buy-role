@@ -140,7 +140,7 @@ client.on('message', message => {
         .setThumbnail(message.author.avatarURL)
         .addField("VIP | في اي بي",`**مميزات الرتبة :
         - رتبة راينبو -rainbow
-        - لاستخدام كود -used
+        - لاستخدام كود -used or -use
         - قيف اوايات خاصه
         - شات خاص باعضاء الفي اي بي
         - للشراء -vip**`)
