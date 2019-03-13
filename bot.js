@@ -16,14 +16,12 @@ let embedvip = new Discord.RichEmbed()
 .setThumbnail(msg.author.avatarURL)
 .setTitle("**اختر الطريقة المناسبة لك**")
 .addField("ل شراء الفي اي بي لنفسك","🔱",true )
-.addField("ل شراء الفي اي بي ك هدية","🎁",true)
 .setTimestamp()
 .setFooter(client.user.username,client.user.displayAvatarURL);
 msg.channel.send(embedvip).then(msgs2 =>{
 msgs2.react("🔱").then(()=>{
   msgs2.react("🎁").then(()=>{
     const me = (reaction, user) => reaction.emoji.name === '🔱' && user.id === msg.author.id;
-    const gift = (reaction, user) => reaction.emoji.name === '🎁' && user.id === msg.author.id;
     const mec = msgs2.createReactionCollector(me, {time: 120000});
     const giftc = msgs2.createReactionCollector(gift, {time: 120000});
 mec.on("collect", r=>{  
@@ -60,7 +58,7 @@ msg.channel.send(`كردت بروبوت\`${Price}\` لديك 4 دقائق لتح
 })})})
 ///
 }
-if(cmd === `${prefix}use`){
+if(cmd === `${prefix}usesdsds`){
   let args = msg.content.split(" ").slice(1)[0];
   if(!args) {  
     let embed = new Discord.RichEmbed()
@@ -137,7 +135,7 @@ client.on('message', message => {
         .setThumbnail(message.author.avatarURL)
         .addField("VIP | في اي بي",`**مميزات الرتبة :
         - رتبة راينبو -rainbow
-        - لاستخدام كود -used او -use
+        - لاستخدام كود -used
         - قيف اوايات خاصه
         - شات خاص باعضاء الفي اي بي
         - للشراء -vip**`)
