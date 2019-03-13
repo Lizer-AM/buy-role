@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+var prefix = "-"
+
 const fs = require("fs");
 let vipKeys = JSON.parse(fs.readFileSync("./vipKeys.json", "utf8"));
 client.on("message", msg=>{
@@ -130,7 +132,6 @@ function save(){
   });
  
 }
-
 
 client.on('message', message => {
     if(message.content.startsWith(prefix + "info")){
