@@ -1,4 +1,4 @@
-سconst Discord = require('discord.js');
+const Discord = require('discord.js');
 const client = new Discord.Client();
 client.on("message", msg=>{
 let id = "532613290795335700"; // ايديك
