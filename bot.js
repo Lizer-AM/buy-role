@@ -20,7 +20,6 @@ let embedvip = new Discord.RichEmbed()
 .setFooter(client.user.username,client.user.displayAvatarURL);
 msg.channel.send(embedvip).then(msgs2 =>{
 msgs2.react("🔱").then(()=>{
-  msgs2.react("🎁").then(()=>{
     const me = (reaction, user) => reaction.emoji.name === '🔱' && user.id === msg.author.id;
     const mec = msgs2.createReactionCollector(me, {time: 120000});
     const giftc = msgs2.createReactionCollector(gift, {time: 120000});
