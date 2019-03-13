@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
 client.on("message", msg=>{
 let id = "532613290795335700"; // ايديك
 let role = "VIP"; // اسم رتبة الفيب
@@ -8,7 +7,7 @@ let Price = 10000; // السعر
 let Price2 = Math.floor(Price-(Price*(1/100)));
 if(!Price || Price < 1) return;
 let cmd = msg.content.split(' ')[0];
-if(cmd === `${prefix}vip`){
+if(cmd === `${prefix}buy`){
 if(msg.author.bot) return;
 if(!msg.channel.guild) return;
 let embedvip = new Discord.RichEmbed()
@@ -61,7 +60,7 @@ msg.channel.send(`كردت بروبوت\`${Price}\` لديك 4 دقائق لتح
 })})})
 ///
 }
-if(cmd === `${prefix}usesdsd`){
+if(cmd === `${prefix}use`){
   let args = msg.content.split(" ").slice(1)[0];
   if(!args) {  
     let embed = new Discord.RichEmbed()
@@ -138,7 +137,7 @@ client.on('message', message => {
         .setThumbnail(message.author.avatarURL)
         .addField("VIP | في اي بي",`**مميزات الرتبة :
         - رتبة راينبو -rainbow
-        - لاستخدام كود -used
+        - لاستخدام كود -used او -use
         - قيف اوايات خاصه
         - شات خاص باعضاء الفي اي بي
         - للشراء -vip**`)
