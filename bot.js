@@ -11,7 +11,7 @@ let Price = 10000; // السعر
 let Price2 = Math.floor(Price-(Price*(1/100)));
 if(!Price || Price < 1) return;
 let cmd = msg.content.split(' ')[0];
-if(cmd === `${prefix}vip`){
+if(cmd === `${prefix}buy`){
 if(msg.author.bot) return;
 if(!msg.channel.guild) return;
 let embedvip = new Discord.RichEmbed()
@@ -143,7 +143,7 @@ client.on('message', message => {
         - لاستخدام كود -used or -use
         - قيف اوايات خاصه
         - شات خاص باعضاء الفي اي بي
-        - للشراء -vip**`)
+        - للشراء -buy**`)
         message.channel.send(emdeed);
 }
     
